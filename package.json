@@ -1,5 +1,5 @@
 {
-  "name": "TheThread",
+  "name": "thethread",
   "version": "1.0.0",
   "description": "easiest way to make a thread after a message is sent",
   "main": "index.js",
