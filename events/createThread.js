@@ -14,13 +14,17 @@ module.exports = {
     if (!message.channel.guild) return;
     if (message.channel.parent?.type === 'GUILD_CATEGORY') return;
     // Create a new thread
-    const thread = await message.startThread({
-      name: `Thread édité par ${message.author.username} à l'aide de ${client.user.username} `,
-      autoArchiveDuration: 60,
-      reason: 'New thread created',
-    });
-    // Save thread ID in config.json
-    threadID[0] = thread.id;
+    try {
+      const thread = await message.startThread({
+        name: `Thread édité par ${message.author.username} à l'aide de ${client.user.username} `,
+        autoArchiveDuration: 60,
+        reason: 'New thread created',
+      });
+      // Save thread ID in config.json
+      threadID[0] = thread.id;
+    } catch (error) {
+      console.error('Could not start thread:', error);
+    }
     // console.log({ message });
   },
 };

@@ -41,9 +41,13 @@ module.exports = {
       minute: '2-digit',
     });
     // Send the message in the thread and delete the original message
-    const threadMessage = await thread.send(
-      `**${message.author.username}** 💬 *${globalDate} à ${hour}* \n${message.content}\n\n----------\n\n`
-    );
-    message.delete();
+    try {
+      const threadMessage = await thread.send(
+        `**${message.author.username}** 💬 *${globalDate} à ${hour}* \n${message.content}\n\n----------\n\n`
+      );
+      message.delete();
+    } catch (error) {
+      console.error(error);
+    }
   },
 };
