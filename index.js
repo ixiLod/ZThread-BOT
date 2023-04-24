@@ -1,4 +1,4 @@
-const { GatewayIntentBits, Client } = require('discord.js');
+const { GatewayIntentBits, Client, Partials } = require('discord.js');
 const { token } = require('./config.json');
 const fs = require('fs');
 
@@ -11,6 +11,7 @@ const client = new Client({
     GatewayIntentBits.GuildMessageReactions,
     GatewayIntentBits.GuildEmojisAndStickers,
   ],
+  partials: [Partials.Message, Partials.Channel, Partials.Reaction],
 });
 
 // Retrieve all event files
