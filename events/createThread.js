@@ -9,22 +9,26 @@ module.exports = {
     if (reaction.emoji.name !== '🪡') return;
     // Focus on the reaction message
     const message = reaction.message;
-    // Return if channel is a thread, a forum or a DM
-    if (message.channel.isThread()) return;
+    // Return if channel is a forum or a DM
     if (!message.channel.guild) return;
     if (message.channel.parent?.type === 'GUILD_CATEGORY') return;
-    // Create a new thread
-    try {
-      const thread = await message.startThread({
-        name: `Thread édité par ${message.author.username} à l'aide de ${client.user.username} `,
-        autoArchiveDuration: 60,
-        reason: 'New thread created',
-      });
-      // Save thread ID in config.json
-      threadID[0] = thread.id;
-    } catch (error) {
-      console.error('Could not start thread:', error);
+    // Add ID to threadID array if message is a thread
+    if (message.thread) {
+      threadID[0] = message.id;
+      return;
+    } else {
+      // Create a new thread
+      try {
+        const newThread = await message.startThread({
+          name: `Thread édité à l'aide de ${client.user.username}`,
+          autoArchiveDuration: 60,
+          reason: 'New thread created',
+        });
+        // Save thread ID in config.json
+        threadID[0] = newThread.id;
+      } catch (error) {
+        console.error('Could not start thread:', error);
+      }
     }
-    // console.log({ message });
   },
 };
