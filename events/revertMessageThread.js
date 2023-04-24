@@ -27,7 +27,8 @@ module.exports = {
         await parent.send(
           `**${message.author.username}** 💬 *${date} à ${hour}* \n${message.content}\n\n---------- *ce message était initialement dans un thread* ----------\n\n`
         );
-      } else if (message.author.bot) {
+        // if message send from the bot
+      } else if (message.author.client) {
         await parent.send(
           `${message.content} *ce message était initialement dans un thread* ----------\n\n`
         );
