@@ -18,6 +18,9 @@ module.exports = {
 
     if (!threadChannel) {
       console.error(`Thread channel with ID "${threadID}" not found.`);
+      message.channel.send(
+        `${message.author}, le message cible n'a pas pu être récupéré, pensez à placer la réaction 🪡 avant de mettre le fil`
+      );
       return;
     }
 
