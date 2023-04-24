@@ -9,10 +9,12 @@ module.exports = {
     if (reaction.emoji.name !== '🧵') return;
     // Focus on the reaction message
     const message = reaction.message;
-    // Return if channel is a thread, a forum or a DM
+    // Return if channel is a thread, a forum or a DM, or message has the same ID
     if (message.channel.isThread()) return;
     if (!message.channel.guild) return;
     if (message.channel.parent?.type === 'GUILD_CATEGORY') return;
+    if (message.id === threadID[0]) return;
+
     // Get the thread ID
     const threadChannel = client.channels.cache.get(threadID[0]);
 
