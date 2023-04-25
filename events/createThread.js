@@ -1,4 +1,5 @@
-const { threadID } = require('../config.json');
+const { threadID, requiredPermission } = require('../config.json');
+const { PermissionsBitField } = require('discord.js');
 
 module.exports = {
   name: 'messageReactionAdd',
@@ -12,6 +13,13 @@ module.exports = {
     // Return if channel is a forum or a DM
     if (!message.channel.guild) return;
     if (message.channel.parent?.type === 'GUILD_CATEGORY') return;
+
+    console.log(PermissionsBitField.Flags);
+    // // Fetch member and check if they are an administrator
+    const member = await message.guild.members.fetch(user.id);
+    if (!member.permissions.has(PermissionsBitField.Flags[requiredPermission]))
+      return;
+
     // Add ID to threadID array if message is a thread
     if (message.thread) {
       threadID[0] = message.id;
@@ -20,7 +28,7 @@ module.exports = {
       // Create a new thread
       try {
         const newThread = await message.startThread({
-          name: `Fil édité à l'aide de ${client.user.username}`,
+          name: `Thread édité à l'aide de ${client.user.username}`,
           autoArchiveDuration: 60,
           reason: 'New thread created',
         });

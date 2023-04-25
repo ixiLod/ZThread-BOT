@@ -1,5 +1,8 @@
 {
   "threadID": [],
-   "token" :
-  "****"
+  "requiredPermission": ["AddReactions"],
+
+  "clientID": "************",
+  "guildID": "************",
+  "token": "************"
 }
