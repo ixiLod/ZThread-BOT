@@ -9,7 +9,7 @@ is a simple way to create threads in discord, it takes place in 2 steps :
 **2 - Put the reaction 🧵 on the message you want to add to the thread
 (doesn't work for messages posted before the bot was added)**. 
 
-Optional : - Use the reaction ✂️ to output text from the thread and send it to the parent file
+Optional : - Use the reaction ✂️ to output text from the thread and send it to the parent channel
 
 ## How to use 
 
