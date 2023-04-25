@@ -1,6 +1,6 @@
 {
   "threadID": [],
-  "requiredPermission": ["AddReactions"],
+  "requiredPermission": ["Administrator"],
 
   "clientID": "************",
   "guildID": "************",
