@@ -15,8 +15,7 @@ module.exports = {
 
     // // Fetch member and check if they are an administrator
     const member = await message.guild.members.fetch(user.id);
-    if (!member.permissions.has(PermissionsBitField.Flags[requiredPermission]))
-      return;
+    if (!member.permissions.has(PermissionsBitField.Flags[requiredPermission])) return;
 
     try {
       // Send the message in the parent thread

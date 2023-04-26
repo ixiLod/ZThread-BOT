@@ -1,9 +1,4 @@
-const {
-  GatewayIntentBits,
-  Client,
-  Partials,
-  Collection,
-} = require('discord.js');
+const { GatewayIntentBits, Client, Partials, Collection } = require('discord.js');
 const { token } = require('./config.json');
 const fs = require('fs');
 const path = require('node:path');
@@ -16,15 +11,12 @@ const client = new Client({
     GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildMessageReactions,
     GatewayIntentBits.GuildEmojisAndStickers,
-    GatewayIntentBits.GuildPresences,
   ],
   partials: [Partials.Message, Partials.Channel, Partials.Reaction],
 });
 
 // Retrieve all event files
-const eventFiles = fs
-  .readdirSync('./events')
-  .filter((file) => file.endsWith('.js'));
+const eventFiles = fs.readdirSync('./events').filter((file) => file.endsWith('.js'));
 
 // Charge all event files
 for (const file of eventFiles) {
@@ -35,9 +27,7 @@ for (const file of eventFiles) {
 // Reading commands files
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs
-  .readdirSync(commandsPath)
-  .filter((file) => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(commandsPath).filter((file) => file.endsWith('.js'));
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
