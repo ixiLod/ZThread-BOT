@@ -10,7 +10,7 @@ module.exports = {
     if (reaction.emoji.name !== '🪡') return;
     // focus on the reaction message
     const message = reaction.message;
-    // // Fetch member and check if they are an administrator
+    // Fetch member and check if they are an administrator
     const member = await message.guild.members.fetch(user.id);
     if (!member.permissions.has(PermissionsBitField.Flags[requiredPermission])) return;
     if (message) {

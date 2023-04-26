@@ -15,7 +15,7 @@ module.exports = {
     if (message.channel.parent?.type === 'GUILD_CATEGORY') return;
 
     console.log(PermissionsBitField.Flags);
-    // // Fetch member and check if they are an administrator
+    // Fetch member and check if they are an administrator
     const member = await message.guild.members.fetch(user.id);
     if (!member.permissions.has(PermissionsBitField.Flags[requiredPermission])) return;
 
