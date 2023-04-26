@@ -14,7 +14,7 @@ module.exports = {
     // Switch to admin only
     requiredPermission.length = 0;
     requiredPermission.push("Administrator");
-    // Reply that the custom links have been deleted
+
     await interaction.reply({
       content: `Le bot est maintenant restreint aux admninistrateurs et modérateurs.`,
       ephemeral: true,

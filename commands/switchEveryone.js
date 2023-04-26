@@ -14,9 +14,7 @@ module.exports = {
     // Switch to everyone
     requiredPermission.length = 0;
     requiredPermission.push("AddReactions");
-    // console.log(requiredPermission);
 
-    // Reply that the custom links have been deleted
     await interaction.reply({
       content: `Le bot est maintenant accessible à tout le monde.`,
       ephemeral: true,
