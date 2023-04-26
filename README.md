@@ -21,6 +21,8 @@ Run the command `node deploy-commands.js` to deploy slash commands
 
 ## Slash Commands
 
+Only for Admins :  
+
 **/setadmin** => *To restrict bot actions to administrators* 
 
 **/seteveryone** => *To make bot actions open to everyone*
