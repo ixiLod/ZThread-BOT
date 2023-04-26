@@ -12,6 +12,7 @@ is a simple way to reorganize your discord channels in threads, it takes place i
 (doesn't work for messages posted before the bot was added)** 
 
 Optional : - Use the reaction ✂️ to output text from the thread and send it to the parent channel
+<br><br><br>
 
 ## How to use 
 
@@ -20,18 +21,26 @@ Set the `config.json` file for add your ID and your token
 Run the command `node index.js` for start the bot 
 
 Run the command `node deploy-commands.js` to deploy slash commands 
+<br><br><br>
 
 ## Slash Commands
 
-Only for Admins :  
+__For Admins :__  
 
 **/setadmin** => *To restrict bot actions to administrators* (default)
 
 **/seteveryone** => *To make bot actions open to everyone*
+<br><br><br>
+__For Everyone :__  
+
+**/statut** => *To visualize the bot status*
+<br><br><br>
+
 
 ## Dependencies 
 
 [discord.js](https://discord.js.org/#/) : A library for interacting with the Discord API 
+<br><br><br>
 
----------------------------------------------------------------------------------------------------------------🧵
+----------------------------------------------------------------------------------------------------------🧵
 
