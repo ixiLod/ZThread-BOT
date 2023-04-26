@@ -40,6 +40,7 @@ __For Everyone :__
 ## Dependencies 
 
 [discord.js](https://discord.js.org/#/) : A library for interacting with the Discord API 
+<br><br><br>
 
 ----------------------------------------------------------------------------------------------------------🧵
 
