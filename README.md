@@ -34,6 +34,7 @@ __For Admins :__
 __For Everyone :__  
 
 **/statut** => *To visualize the bot statut*
+<br><br><br>
 
 
 ## Dependencies 
