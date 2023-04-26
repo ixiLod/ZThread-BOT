@@ -1,5 +1,5 @@
 {
-  "name": "thethread",
+  "name": "zthread",
   "version": "1.0.0",
   "description": "easiest way to make a thread after a message is sent",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ixiLod",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^14.9.0"
   }
