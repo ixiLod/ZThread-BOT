@@ -4,7 +4,7 @@ let { requiredPermission } = require('../config.json');
 module.exports = {
   data: new SlashCommandBuilder()
     // Set the name and description of the command
-    .setName('statut')
+    .setName('status')
     .setDescription('Pour savoir si le bot est en mode admin ou everyone.'),
 
   async execute(interaction) {
