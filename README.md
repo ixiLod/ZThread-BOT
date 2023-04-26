@@ -33,7 +33,7 @@ __For Admins :__
 <br><br><br>
 __For Everyone :__  
 
-**/statut** => *To visualize the bot status*
+**/status** => *To visualize the bot status*
 <br><br><br>
 
 
