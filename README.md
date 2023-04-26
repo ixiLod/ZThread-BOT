@@ -2,7 +2,7 @@
 -----------------------------🧵
 <p align="center">
 <img src="https://user-images.githubusercontent.com/51421090/234418436-484e4361-b976-4c39-8f4b-70257059e56b.png"</img>
-</p>
+</p><br> 
  
 is a simple way to reorganize your discord channels in threads, it takes place in 2 steps :
 
