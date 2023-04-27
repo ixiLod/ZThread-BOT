@@ -45,6 +45,10 @@ for (const file of commandFiles) {
 // notification when the bot is ready
 client.on('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  // Checks server name who add the bot
+  client.guilds.cache.forEach((guild) => {
+    console.log(guild.name);
+  });
 });
 
 client.login(token);
