@@ -4,11 +4,8 @@ const { PermissionsBitField } = require('discord.js');
 module.exports = {
   name: 'messageReactionAdd',
   async execute(reaction, user, client) {
-    // Return if user is bot
     if (user.bot) return;
-    // Return if reaction is not 🪡
     if (reaction.emoji.name !== '🪡') return;
-    // Focus on the reaction message
     const message = reaction.message;
     // Return if channel is a forum or a DM
     if (!message.channel.guild) return;

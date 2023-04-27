@@ -4,11 +4,8 @@ const { PermissionsBitField } = require('discord.js');
 module.exports = {
   name: 'messageReactionAdd',
   async execute(reaction, user, client) {
-    // Return if user is bot
     if (user.bot) return;
-    // Return if reaction is not 🧵
     if (reaction.emoji.name !== '🧵') return;
-    // Focus on the reaction message
     const message = reaction.message;
     // Return if channel is a thread, a forum or a DM, or message has the same ID
     if (message.channel.isThread()) return;
@@ -50,7 +47,7 @@ module.exports = {
         minute: '2-digit',
       });
       // Send the message in the thread and delete the original message
-      const threadMessage = await thread.send(
+      await thread.send(
         `**${message.author.username}** 💬 *${globalDate} à ${hour}* \n${message.content}\n\n----------\n\n`
       );
       message.delete();
