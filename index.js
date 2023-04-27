@@ -47,7 +47,7 @@ client.on('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
   // Checks server name who add the bot
   client.guilds.cache.forEach((guild) => {
-    console.log(guild.name);
+    console.log(guild.name, guild.id);
   });
 });
 
