@@ -19,8 +19,9 @@ module.exports = {
     // Fetch member and check if they are an administrator
     const member = await message.guild.members.fetch(user.id);
     if (!member.permissions.has(PermissionsBitField.Flags[requiredPermission])) return;
-    // Get the thread ID
+
     try {
+      // Get the thread ID
       const threadChannel = client.channels.cache.get(threadID[0]);
 
       if (!threadChannel) {
@@ -30,7 +31,6 @@ module.exports = {
         );
         return;
       }
-
       // Get the thread
       const thread = await threadChannel.fetch();
 
@@ -38,7 +38,6 @@ module.exports = {
         console.error(`Thread with ID "${threadID}" not found.`);
         return;
       }
-
       // Get the date of the message
       const date = new Date(message.createdTimestamp);
       const globalDate = date.toLocaleDateString('fr-FR', {
@@ -50,7 +49,6 @@ module.exports = {
         hour: '2-digit',
         minute: '2-digit',
       });
-
       // Send the message in the thread and delete the original message
       const threadMessage = await thread.send(
         `**${message.author.username}** 💬 *${globalDate} à ${hour}* \n${message.content}\n\n----------\n\n`

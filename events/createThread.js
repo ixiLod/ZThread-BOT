@@ -23,8 +23,8 @@ module.exports = {
       threadID[0] = message.id;
       return;
     } else {
-      // Create a new thread
       try {
+        // Create a new thread
         const newThread = await message.startThread({
           name: `Thread édité à l'aide de ${client.user.username}`,
           autoArchiveDuration: 60,
