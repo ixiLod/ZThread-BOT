@@ -2,8 +2,7 @@ const { checkPermission } = require('../helpers/permissionCheck');
 
 module.exports = {
   name: 'messageReactionAdd',
-  async execute(reaction, user, client) {
-    if (user.bot) return;
+  async execute(reaction, user) {
     if (reaction.emoji.name !== '✂️') return;
     const message = reaction.message;
 
