@@ -16,12 +16,16 @@ Optional : - Use the reaction ✂️ to output text from the thread and send it 
 
 ## How to use 
 
-Set the `config.json` file for add your ID and your token
+Set the `config.json` file for add your ID and your token. 
+<br><br><br>
 
 Run the command `node index.js` for start the bot 
 
 Run the command `node deploy-commands.js` to deploy slash commands 
-<br><br><br>
+
+Or you can use Docker and build your image => `docker build -t zthread-bot .`. 
+
+<br>
 
 ## Slash Commands
 
@@ -34,7 +38,8 @@ __For Admins :__
 __For Everyone :__  
 
 **/status** => *To visualize the bot status*
-<br><br><br>
+
+<br>
 
 
 ## Dependencies 
