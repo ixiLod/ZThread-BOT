@@ -1,21 +1,21 @@
-const { threadID, requiredPermission } = require('../config.json');
-const { PermissionsBitField } = require('discord.js');
+const { threadID } = require('../config.json');
+const { checkPermission } = require('../helpers/permissionCheck');
 
 module.exports = {
   name: 'messageReactionAdd',
   async execute(reaction, user, client) {
-    if (user.bot) return;
     if (reaction.emoji.name !== '🧵') return;
     const message = reaction.message;
+
+    // Check if user is a bot and if user have the required permission
+    const hasPermission = await checkPermission(user, message);
+    if (!hasPermission) return;
+
     // Return if channel is a thread, a forum or a DM, or message has the same ID
     if (message.channel.isThread()) return;
     if (!message.channel.guild) return;
     if (message.channel.parent?.type === 'GUILD_CATEGORY') return;
     if (message.id === threadID[0]) return;
-
-    // Fetch member and check if they are an administrator
-    const member = await message.guild.members.fetch(user.id);
-    if (!member.permissions.has(PermissionsBitField.Flags[requiredPermission])) return;
 
     try {
       // Get the thread ID
@@ -24,7 +24,7 @@ module.exports = {
       if (!threadChannel) {
         console.error(`Thread channel with ID "${threadID}" not found.`);
         message.channel.send(
-          `${user.username}, le message cible n'a pas pu être récupéré, pensez à placer la réaction 🪡 avant de mettre le fil`
+          `${message.author}, le message cible n'a pas pu être récupéré, pensez à placer la réaction 🪡 avant de mettre le fil`
         );
         return;
       }

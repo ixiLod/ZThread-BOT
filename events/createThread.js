@@ -1,19 +1,18 @@
-const { threadID, requiredPermission } = require('../config.json');
-const { PermissionsBitField } = require('discord.js');
+const { threadID } = require('../config.json');
+const { checkPermission } = require('../helpers/permissionCheck');
 
 module.exports = {
   name: 'messageReactionAdd',
   async execute(reaction, user, client) {
-    if (user.bot) return;
     if (reaction.emoji.name !== '🪡') return;
     const message = reaction.message;
+
+    const hasPermission = await checkPermission(user, message);
+    if (!hasPermission) return;
+
     // Return if channel is a forum or a DM
     if (!message.channel.guild) return;
     if (message.channel.parent?.type === 'GUILD_CATEGORY') return;
-
-    // Fetch member and check if they are an administrator
-    const member = await message.guild.members.fetch(user.id);
-    if (!member.permissions.has(PermissionsBitField.Flags[requiredPermission])) return;
 
     // Add ID to threadID array if message is a thread
     if (message.thread) {

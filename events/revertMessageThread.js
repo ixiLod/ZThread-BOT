@@ -1,5 +1,4 @@
-const { requiredPermission } = require('../config.json');
-const { PermissionsBitField } = require('discord.js');
+const { checkPermission } = require('../helpers/permissionCheck');
 
 module.exports = {
   name: 'messageReactionAdd',
@@ -7,11 +6,11 @@ module.exports = {
     if (user.bot) return;
     if (reaction.emoji.name !== '✂️') return;
     const message = reaction.message;
-    if (!message.channel.isThread()) return;
 
-    // Fetch member and check if they are an administrator
-    const member = await message.guild.members.fetch(user.id);
-    if (!member.permissions.has(PermissionsBitField.Flags[requiredPermission])) return;
+    const hasPermission = await checkPermission(user, message);
+    if (!hasPermission) return;
+
+    if (!message.channel.isThread()) return;
 
     try {
       // Send the message in the parent thread
