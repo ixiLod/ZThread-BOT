@@ -63,6 +63,9 @@ module.exports = {
       message.delete();
     } catch (error) {
       console.error(error);
+      message.channel.send(
+        "La réaction 🧵 fonctionne uniquement sur les messages postés après mon arrivée sur le serveur. N'hésitez pas à utiliser cette réaction sur les messages plus récents"
+      );
     }
   },
 };
