@@ -1,6 +1,4 @@
 {
-  "requiredPermission": ["Administrator"],
-
   "clientID": "************",
   "guildID": "************",
   "token": "************",

@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-let { requiredPermission } = require('../config.json');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -11,9 +10,8 @@ module.exports = {
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
   async execute(interaction) {
-    // Switch to admin only
-    requiredPermission.length = 0;
-    requiredPermission.push("Administrator");
+    // Add Administrator in guildPermission map in index.js for switch to admin
+    interaction.client.guildPermissions.set(interaction.guild.id, 'Administrator');
 
     await interaction.reply({
       content: `Le bot est maintenant restreint aux admninistrateurs et modérateurs.`,

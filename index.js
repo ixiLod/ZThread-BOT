@@ -16,6 +16,9 @@ const client = new Client({
   partials: [Partials.Message, Partials.Channel, Partials.Reaction],
 });
 
+// Set map for guild permissions
+client.guildPermissions = new Map();
+
 // Retrieve all event files
 const eventFiles = fs.readdirSync('./events').filter((file) => file.endsWith('.js'));
 

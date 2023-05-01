@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-let { requiredPermission } = require('../config.json');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -9,8 +8,17 @@ module.exports = {
 
   async execute(interaction) {
     let status = null;
+    const guildId = interaction.guild.id;
+    const permission = interaction.client.guildPermissions.get(guildId);
+
     // If the bot is in admin mode, status is admin, if not, status is everyone
-    requiredPermission[0] === "Administrator" ? (status = 'admin') : (status = 'everyone');
+    if (permission === 'Administrator') {
+      status = 'admin';
+    } else if (permission === 'AddReactions') {
+      status = 'everyone';
+    } else {
+      status = 'admin';
+    }
 
     await interaction.reply({
       content: `Le bot est actuellement en mode ${status}.`,
