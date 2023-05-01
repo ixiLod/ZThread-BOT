@@ -16,12 +16,14 @@ Optional : - Use the reaction ✂️ to output text from the thread and send it 
 
 ## How to use 
 
-Add your tokens and id in your `.env`, or set the `config.json`
-<br><br><br>
+Add your tokens and id in your `.env`, or set the `config.json` 
+
+Install packages with `pnpm install` 
 
 Run the command `node index.js` for start the bot 
 
 Run the command `node deploy-commands.js` to deploy slash commands 
+<br><br> 
 
 Or you can use Docker and build your image => `docker build -t zthread-bot .` 
 
@@ -47,7 +49,7 @@ __For Everyone :__
 [discord.js](https://discord.js.org/#/) : A library for interacting with the Discord API. 
 
 [supabase.js](https://supabase.com/) : A library for interacting with the Supabase API
-<br><br>
+<br><br><br>
 
 ----------------------------------------------------------------------------------------------------------🧵
 
