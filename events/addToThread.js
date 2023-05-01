@@ -22,7 +22,6 @@ module.exports = {
       .from('guild_threads')
       .select('thread_id')
       .eq('guild_id', guildId);
-
     if (error) {
       console.error('Error getting thread ID from database:', error);
     }
@@ -43,9 +42,8 @@ module.exports = {
       console.error(`Thread was not found.`);
       return;
     }
-
     try {
-      // Get the date of the message
+      // Set date, send the message in the thread and delete the original message
       const date = new Date(message.createdTimestamp);
       const globalDate = date.toLocaleDateString('fr-FR', {
         day: '2-digit',
@@ -56,7 +54,6 @@ module.exports = {
         hour: '2-digit',
         minute: '2-digit',
       });
-      // Send the message in the thread and delete the original message
       await thread.send(
         `**${message.author.username}** 💬 *${globalDate} à ${hour}* \n${message.content}\n\n----------\n\n`
       );

@@ -25,7 +25,6 @@ module.exports = {
           hour: '2-digit',
           minute: '2-digit',
         });
-        // send message in parent thread
         await parent.send(
           `**${message.author.username}** 💬 *${date} à ${hour}* \n${message.content}\n\n---------- *ce message était initialement dans un thread* ----------\n\n`
         );
