@@ -1,7 +1,8 @@
 const { GatewayIntentBits, Client, Partials, Collection } = require('discord.js');
-const { token } = require('./config.json');
-const fs = require('fs');
+const fs = require('node:fs');
 const path = require('node:path');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const client = new Client({
   intents: [
@@ -51,4 +52,4 @@ client.on('ready', async () => {
   });
 });
 
-client.login(token);
+client.login(process.env.TOKEN);
