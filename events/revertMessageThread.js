@@ -16,17 +16,17 @@ module.exports = {
       const parent = await message.channel.parent.fetch();
       // if message send from an user
       if (message.author.bot === false) {
-        const date = message.createdAt.toLocaleString('fr-FR', {
+        const date = message.createdAt.toLocaleString('en-EN', {
           day: '2-digit',
           month: '2-digit',
           year: '2-digit',
         });
-        const hour = message.createdAt.toLocaleTimeString('fr-FR', {
+        const hour = message.createdAt.toLocaleTimeString('en-EN', {
           hour: '2-digit',
           minute: '2-digit',
         });
         await parent.send(
-          `**${message.author.username}** 💬 *${date} à ${hour}* \n${message.content}\n\n---------- *this post was originally in a thread* ----------\n\n`
+          `**${message.author.username}** 💬 *${date} at ${hour}* \n${message.content}\n\n---------- *this post was originally in a thread* ----------\n\n`
         );
         // if message send from the bot
       } else if (message.author.client) {
