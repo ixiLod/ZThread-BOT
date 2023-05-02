@@ -4,7 +4,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     // Set the name and description of the command
     .setName('status')
-    .setDescription('Pour savoir si le bot est en mode admin ou everyone.'),
+    .setDescription('To know if the bot is in admin or everyone mode.'),
 
   async execute(interaction) {
     let status = null;
@@ -21,7 +21,7 @@ module.exports = {
     }
 
     await interaction.reply({
-      content: `Le bot est actuellement en mode ${status}.`,
+      content: `The bot is currently in ${status} mode.`,
       ephemeral: true,
     });
   },

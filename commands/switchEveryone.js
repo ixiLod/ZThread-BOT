@@ -5,7 +5,7 @@ module.exports = {
     // Set the name and description of the command
     .setName('seteveryone')
     .setDescription(
-      "Pour rendre l'utilisation du bot accessible à tout le monde."
+      "To make the use of the bot accessible to everyone."
     )
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
@@ -14,7 +14,7 @@ module.exports = {
     interaction.client.guildPermissions.set(interaction.guild.id, 'AddReactions');
 
     await interaction.reply({
-      content: `Le bot est maintenant accessible à tout le monde.`,
+      content: `The bot is now accessible to everyone.`,
       ephemeral: true,
     });
   },

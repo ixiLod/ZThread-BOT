@@ -3,7 +3,7 @@ const { supabase } = require('../helpers/supabaseClient');
 
 module.exports = {
   name: 'messageReactionAdd',
-  async execute(reaction, user, client) {
+  async execute(reaction, user) {
     if (reaction.emoji.name !== '🧵') return;
     const message = reaction.message;
     const guildId = message.guild.id;
@@ -29,7 +29,7 @@ module.exports = {
     // Check data and return if no thread ID is found
     if (!data || data.length === 0) {
       message.channel.send(
-        `${user.username}, le message cible n'a pas pu être récupéré, pensez à placer la réaction 🪡 avant de mettre le fil`
+        `${user.username}, the target message could not be retrieved, consider placing the reaction 🪡 before putting the thread.`
       );
       return;
     }
@@ -55,13 +55,13 @@ module.exports = {
         minute: '2-digit',
       });
       await thread.send(
-        `**${message.author.username}** 💬 *${globalDate} à ${hour}* \n${message.content}\n\n----------\n\n`
+        `**${message.author.username}** 💬 *${globalDate} at ${hour}* \n${message.content}\n\n----------\n\n`
       );
       message.delete();
     } catch (error) {
       console.error(error);
       message.channel.send(
-        "La réaction 🧵 fonctionne uniquement sur les messages postés après mon arrivée sur le serveur. N'hésitez pas à utiliser cette réaction sur les messages plus récents"
+        'The 🧵 reaction only works on messages posted after I arrived on the server. Feel free to use this reaction on newer posts.'
       );
     }
   },

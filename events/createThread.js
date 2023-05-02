@@ -26,7 +26,7 @@ module.exports = {
       try {
         // Create a new thread
         const newThread = await message.startThread({
-          name: `Thread édité à l'aide de ${client.user.username}`,
+          name: `Thread edited with ${client.user.username}`,
           autoArchiveDuration: 60,
           reason: 'New thread created',
         });

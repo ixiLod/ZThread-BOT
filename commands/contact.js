@@ -4,13 +4,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     // Set the name and description of the command
     .setName('contact')
-    .setDescription("Pour contacter l'auteur du bot"),
+    .setDescription('To contact the bot creator'),
   async execute(interaction) {
     await interaction.reply(
       // Reply the name of the author of the bot
       {
-        content:
-          "Vous pouvez contacter l'auteur du bot sur ce compte discord : ixiLod#7879",
+        content: 'You can contact the bot author on this discord account : ixiLod#7879',
         ephemeral: true,
       }
     );

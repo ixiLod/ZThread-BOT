@@ -5,7 +5,7 @@ module.exports = {
     // Set the name and description of the command
     .setName('setadmin')
     .setDescription(
-      "Pour restreindre l'utilisation du bot aux administrateurs et modérateurs."
+      "To restrict the use of the bot to administrators and moderators."
     )
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
@@ -14,7 +14,7 @@ module.exports = {
     interaction.client.guildPermissions.set(interaction.guild.id, 'Administrator');
 
     await interaction.reply({
-      content: `Le bot est maintenant restreint aux admninistrateurs et modérateurs.`,
+      content: `The bot is now restricted to administrators and moderators.`,
       ephemeral: true,
     });
   },

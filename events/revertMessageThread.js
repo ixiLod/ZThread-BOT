@@ -26,12 +26,12 @@ module.exports = {
           minute: '2-digit',
         });
         await parent.send(
-          `**${message.author.username}** 💬 *${date} à ${hour}* \n${message.content}\n\n---------- *ce message était initialement dans un thread* ----------\n\n`
+          `**${message.author.username}** 💬 *${date} à ${hour}* \n${message.content}\n\n---------- *this post was originally in a thread* ----------\n\n`
         );
         // if message send from the bot
       } else if (message.author.client) {
         await parent.send(
-          `${message.content} *ce message était initialement dans un thread* ----------\n\n`
+          `${message.content} *this post was originally in a thread* ----------\n\n`
         );
       }
       message.delete();
