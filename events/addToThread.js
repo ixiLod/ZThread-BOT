@@ -45,12 +45,12 @@ module.exports = {
     try {
       // Set date, send the message in the thread and delete the original message
       const date = new Date(message.createdTimestamp);
-      const globalDate = date.toLocaleDateString('en-EN', {
+      const globalDate = date.toLocaleDateString('fr-FR', {
         day: '2-digit',
         month: '2-digit',
         year: '2-digit',
       });
-      const hour = date.toLocaleTimeString('en-EN', {
+      const hour = date.toLocaleTimeString('fr-FR', {
         hour: '2-digit',
         minute: '2-digit',
       });

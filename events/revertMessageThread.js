@@ -16,12 +16,12 @@ module.exports = {
       const parent = await message.channel.parent.fetch();
       // if message send from an user
       if (message.author.bot === false) {
-        const date = message.createdAt.toLocaleString('en-EN', {
+        const date = message.createdAt.toLocaleString('fr-FR', {
           day: '2-digit',
           month: '2-digit',
           year: '2-digit',
         });
-        const hour = message.createdAt.toLocaleTimeString('en-EN', {
+        const hour = message.createdAt.toLocaleTimeString('fr-FR', {
           hour: '2-digit',
           minute: '2-digit',
         });
