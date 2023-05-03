@@ -46,13 +46,21 @@ for (const file of commandFiles) {
   }
 }
 
-// notification when the bot is ready
 client.on('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
   // Checks server name who add the bot
   client.guilds.cache.forEach((guild) => {
     console.log(guild.name, guild.id);
   });
+});
+
+client.on('guildCreate', async (guild) => {
+  // Get guild ID, user ID, and send a message to the user
+  const guildId = guild.id;
+  const user = await client.users.fetch(process.env.USERID);
+  user.send(
+    `${client.user.username} was added to this discord guild : ${guild.name} (ID: ${guildId}).`
+  );
 });
 
 client.login(process.env.TOKEN);
