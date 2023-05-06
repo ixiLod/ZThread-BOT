@@ -5,7 +5,7 @@ module.exports = {
   name: 'messageReactionAdd',
   async execute(reaction, user) {
     if (reaction.emoji.name !== '🧵') return;
-    const message = reaction.message;
+    const message = await reaction.message.fetch();
     const guildId = message.guild.id;
 
     // Check if user is a bot and if user have the required permission
