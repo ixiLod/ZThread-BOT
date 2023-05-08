@@ -8,8 +8,7 @@ is a simple way to reorganize your discord channels in threads, it takes place i
 
 **1 - Put the reaction 🪡 on a message to start a thread** 
 
-**2 - Put the reaction 🧵 on the message you want to add to the thread
-(doesn't work for messages posted before the bot was added)** 
+**2 - Put the reaction 🧵 on the message you want to add to the thread** 
 
 Optional : - Use the reaction ✂️ to output text from the thread and send it to the parent channel
 <br><br><br>
@@ -18,7 +17,7 @@ Optional : - Use the reaction ✂️ to output text from the thread and send it 
 
 Add your tokens and id in your `.env`, or set the `config.json` 
 
-Install packages with `pnpm install` 
+Install packages with `pnpm install` <br><br>
 
 Run the command `node index.js` for start the bot 
 
