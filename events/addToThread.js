@@ -1,3 +1,4 @@
+const { EmbedBuilder } = require('discord.js');
 const { checkPermission } = require('../helpers/permissionCheck');
 const { supabase } = require('../helpers/supabaseClient');
 
@@ -43,7 +44,7 @@ module.exports = {
       return;
     }
     try {
-      // Set date, send the message in the thread and delete the original message
+      // Set date, check if message contains an image or other file, send the message in the thread and delete the original message
       const date = new Date(message.createdTimestamp);
       const globalDate = date.toLocaleDateString('fr-FR', {
         day: '2-digit',
@@ -54,14 +55,33 @@ module.exports = {
         hour: '2-digit',
         minute: '2-digit',
       });
-      await thread.send(
-        `**${message.author.username}** 💬 *${globalDate} at ${hour}* \n${message.content}\n\n----------\n\n`
-      );
+
+      const files = [];
+      if (message.attachments.size > 0) {
+        message.attachments.forEach((attachment) => {
+          const attachedFile = new EmbedBuilder()
+            .setImage(attachment.url)
+            .setDescription(`Attached file : [${attachment.name}](${attachment.url})`);
+          files.push(attachedFile);
+        });
+      }
+
+      const sendMessage =
+        files.length > 0
+          ? {
+              content: `**${message.author.username}** 💬 *${globalDate} at ${hour}* \n${message.content}\n\n----------\n\n`,
+              embeds: files,
+            }
+          : {
+              content: `**${message.author.username}** 💬 *${globalDate} at ${hour}* \n${message.content}\n\n----------\n\n`,
+            };
+
+      await thread.send(sendMessage);
       message.delete();
     } catch (error) {
       console.error(error);
       message.channel.send(
-        'The 🧵 reaction only works on messages posted after I arrived on the server. Feel free to use this reaction on newer posts.'
+        "🤖 There was a problem, but don't worry, my developer will check what happened and fix it 🙏"
       );
     }
   },
