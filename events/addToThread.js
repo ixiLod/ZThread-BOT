@@ -44,7 +44,7 @@ module.exports = {
       return;
     }
     try {
-      // Set date, check if message contains an image or other file, send the message in the thread and delete the original message
+      // Set date
       const date = new Date(message.createdTimestamp);
       const globalDate = date.toLocaleDateString('fr-FR', {
         day: '2-digit',
@@ -55,7 +55,7 @@ module.exports = {
         hour: '2-digit',
         minute: '2-digit',
       });
-
+      // Set files
       const files = [];
       if (message.attachments.size > 0) {
         message.attachments.forEach((attachment) => {
@@ -65,7 +65,7 @@ module.exports = {
           files.push(attachedFile);
         });
       }
-
+      // Set message, depending on whether it contains a file
       const sendMessage =
         files.length > 0
           ? {
@@ -75,7 +75,7 @@ module.exports = {
           : {
               content: `**${message.author.username}** 💬 *${globalDate} at ${hour}* \n${message.content}\n\n----------\n\n`,
             };
-
+      // Send message to thread and delete the original message
       await thread.send(sendMessage);
       message.delete();
     } catch (error) {
