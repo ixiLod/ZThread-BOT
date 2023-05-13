@@ -1,5 +1,6 @@
-const { EmbedBuilder } = require('discord.js');
 const { checkPermission } = require('../helpers/permissionCheck');
+const { attachmentsFiles } = require('../helpers/attachmentsFiles');
+const { setDate } = require('../helpers/setDate');
 const { supabase } = require('../helpers/supabaseClient');
 
 module.exports = {
@@ -9,7 +10,6 @@ module.exports = {
     const message = await reaction.message.fetch();
     const guildId = message.guild.id;
 
-    // Check if user is a bot and if user have the required permission
     const hasPermission = await checkPermission(user, message);
     if (!hasPermission) return;
 
@@ -43,33 +43,16 @@ module.exports = {
       console.error(`Thread was not found.`);
       return;
     }
+    
     try {
-      // Set date
-      const date = new Date(message.createdTimestamp);
-      const globalDate = date.toLocaleDateString('fr-FR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: '2-digit',
-      });
-      const hour = date.toLocaleTimeString('fr-FR', {
-        hour: '2-digit',
-        minute: '2-digit',
-      });
-      // Set files
-      const files = [];
-      if (message.attachments.size > 0) {
-        message.attachments.forEach((attachment) => {
-          const attachedFile = new EmbedBuilder()
-            .setImage(attachment.url)
-            .setDescription(`Attached file : [${attachment.name}](${attachment.url})`);
-          files.push(attachedFile);
-        });
-      }
+      const { globalDate, hour } = await setDate(message);
+      const files = attachmentsFiles(message);
+
       // Set message, depending on whether it contains a file
       const sendMessage =
         files.length > 0
           ? {
-              content: `**${message.author.username}** 💬 *${globalDate} at ${hour}* \n${message.content}\n\n----------\n\n`,
+              content: `**${message.author.username}** 💬 *${globalDate} at ${hour}* \n${message.content}`,
               embeds: files,
             }
           : {
