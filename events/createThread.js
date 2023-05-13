@@ -1,5 +1,6 @@
 const { checkPermission } = require('../helpers/permissionCheck');
 const { supabase } = require('../helpers/supabaseClient');
+const { errorMessage } = require('../helpers/errorMessage');
 
 module.exports = {
   name: 'messageReactionAdd',
@@ -36,6 +37,7 @@ module.exports = {
           .insert([{ guild_id: guildId, thread_id: newThread.id }]);
       } catch (error) {
         console.error('Could not start thread:', error);
+        message.channel.send(errorMessage);
       }
     }
   },

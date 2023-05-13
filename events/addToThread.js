@@ -1,6 +1,7 @@
 const { checkPermission } = require('../helpers/permissionCheck');
 const { attachmentsFiles } = require('../helpers/attachmentsFiles');
 const { setDate } = require('../helpers/setDate');
+const { errorMessage } = require('../helpers/errorMessage');
 const { supabase } = require('../helpers/supabaseClient');
 
 module.exports = {
@@ -43,7 +44,7 @@ module.exports = {
       console.error(`Thread was not found.`);
       return;
     }
-    
+
     try {
       const { globalDate, hour } = await setDate(message);
       const files = attachmentsFiles(message);
@@ -63,9 +64,7 @@ module.exports = {
       message.delete();
     } catch (error) {
       console.error(error);
-      message.channel.send(
-        "🤖 There was a problem, but don't worry, my developer will check what happened and fix it 🙏"
-      );
+      message.channel.send(errorMessage);
     }
   },
 };

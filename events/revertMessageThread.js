@@ -1,6 +1,7 @@
 const { checkPermission } = require('../helpers/permissionCheck');
 const { attachmentsFiles } = require('../helpers/attachmentsFiles');
 const { setDate } = require('../helpers/setDate');
+const { errorMessage } = require('../helpers/errorMessage');
 
 module.exports = {
   name: 'messageReactionAdd',
@@ -40,11 +41,12 @@ module.exports = {
             : {
                 content: `${message.content} *this post was originally in a thread* ----------\n\n`,
               };
-        await parent.send(sendMessage);
+        await parent.send(senttdMessage);
       }
       message.delete();
     } catch (error) {
       console.error(error);
+      message.channel.send(errorMessage);
     }
   },
 };
