@@ -1,5 +1,5 @@
 module.exports = {
-  setDate: async (message) => {
+  setDate: (message) => {
     const date = new Date(message.createdTimestamp);
     const globalDate = date.toLocaleDateString('fr-FR', {
       day: '2-digit',
