@@ -15,7 +15,7 @@ module.exports = {
     if (!message.channel.isThread()) return;
 
     try {
-      const { globalDate, hour } = await setDate(message);
+      const { globalDate, hour } = setDate(message);
       const files = attachmentsFiles(message);
 
       // Get parent channel and send message depending if is a bot or not
