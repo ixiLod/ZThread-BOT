@@ -46,8 +46,8 @@ module.exports = {
     }
 
     try {
-      const { globalDate, hour } = setDate(message);
-      const files = attachmentsFiles(message);
+      const { globalDate, hour } = await setDate(message);
+      const files = await attachmentsFiles(message);
 
       // Set message, depending on whether it contains a file
       const sendMessage =

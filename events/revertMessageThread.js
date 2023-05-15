@@ -15,8 +15,8 @@ module.exports = {
     if (!message.channel.isThread()) return;
 
     try {
-      const { globalDate, hour } = setDate(message);
-      const files = attachmentsFiles(message);
+      const { globalDate, hour } = await setDate(message);
+      const files = await attachmentsFiles(message);
 
       // Get parent channel and send message depending if is a bot or not
       const parent = await message.channel.parent.fetch();
@@ -41,7 +41,7 @@ module.exports = {
             : {
                 content: `${message.content} *this post was originally in a thread* ----------\n\n`,
               };
-        await parent.send(senttdMessage);
+        await parent.send(sendMessage);
       }
       message.delete();
     } catch (error) {

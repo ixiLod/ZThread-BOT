@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
-  attachmentsFiles: (message) => {
+  attachmentsFiles: async (message) => {
     const files = [];
     if (message.attachments.size > 0) {
       message.attachments.forEach((attachment) => {
@@ -12,5 +12,5 @@ module.exports = {
       });
     }
     return files;
-  }
-}
+  },
+};
