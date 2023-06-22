@@ -13,18 +13,24 @@ is a simple way to reorganize your discord channels in threads, it takes place i
 Optional : - Use the reaction ✂️ to output text from the thread and send it to the parent channel
 <br><br><br>
 
-## How to use 
+## How to install
+
+**You can directly add it to your discord server by going to => [this link](https://top.gg/fr/bot/1100136352978317363)**  
+<br>
+
+**Or you can install it locally :** 
 
 Add your tokens and id in your `.env`, or set the `config.json` 
 
-Install packages with `pnpm install` <br><br>
+Install packages with `pnpm install` 
 
 Run the command `node index.js` for start the bot 
 
-Run the command `node deploy-commands.js` to deploy slash commands 
-<br><br> 
+Run the command `node deploy-commands.js` to deploy slash commands
+<br><br>
 
-Or you can use Docker and build your image => `docker build -t zthread-bot .` 
+
+**Or you can use Docker and build your image => `docker build -t zthread-bot .`** 
 
 <br>
 
