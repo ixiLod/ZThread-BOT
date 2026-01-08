@@ -15,7 +15,7 @@ Optional : - Use the reaction ✂️ to output text from the thread and send it 
 
 ## How to install
 
-**You can directly add it to your discord server by going to => [this link](https://top.gg/fr/bot/1100136352978317363)**  
+~~**You can directly add it to your discord server by going to => [this link](https://top.gg/fr/bot/1100136352978317363)**~~
 <br>
 
 **Or you can install it locally :** 
